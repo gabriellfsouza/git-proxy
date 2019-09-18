@@ -1,5 +1,6 @@
-import MockAdapter from 'axios-mock-adapter';
 import api from '../../src/app/services/api';
+// eslint-disable-next-line import/order
+import MockAdapter from 'axios-mock-adapter';
 
 const apiMock = new MockAdapter(api);
 
@@ -9,7 +10,7 @@ const apiMock = new MockAdapter(api);
  * @param {Number} code
  */
 export function getError(path, code) {
-  apiMock.onGet(path).reply(code);
+  apiMock.onGet(path).reply(code, {});
 }
 
 /**
@@ -17,9 +18,11 @@ export function getError(path, code) {
  * @param {String} user
  */
 export function getUser(user) {
-  apiMock.onGet(`users/${user}`, {
+  apiMock.onGet(`users/${user}`).reply(200, {
     login: user,
-    id: 21299792,
+  });
+}
+/* id: 21299792,
     node_id: 'MDQ6VXNlcjIxMjk5Nzky',
     avatar_url: 'https://avatars0.githubusercontent.com/u/21299792?v=4',
     gravatar_id: '',
@@ -55,4 +58,4 @@ export function getUser(user) {
     created_at: '2016-08-29T01:40:54Z',
     updated_at: '2019-08-30T18:43:02Z',
   });
-}
+} */

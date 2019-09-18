@@ -3,6 +3,6 @@ import UserController from './app/controllers/UserController';
 
 const routes = new Router();
 
-routes.get('/users/:user', UserController.index);
+routes.get('/api/users/:user/details', UserController.index);
 
 export default routes;
