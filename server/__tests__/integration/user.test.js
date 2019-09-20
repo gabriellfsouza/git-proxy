@@ -1,9 +1,8 @@
-import 'dotenv/config';
 import request from 'supertest';
 import ApiMock from '../util/ApiMock';
 import app from '../../src/app';
 
-describe('User endpoint', () => {
+describe('User', () => {
   let apiMock;
 
   beforeAll(() => {

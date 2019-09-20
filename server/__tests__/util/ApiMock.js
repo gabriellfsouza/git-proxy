@@ -9,7 +9,7 @@ class ApiMock extends MockAdapter {
   }
 
   /**
-   * Mock a get on git user repository list api with pagination (first page).
+   * Mocks a get on git user repository list api with pagination (first page).
    * Expect that page number must be 1 or undefined.
    * @param {String} user
    * @param {Number} page
@@ -39,7 +39,7 @@ class ApiMock extends MockAdapter {
   }
 
   /**
-   * Mock a get on git user repository list api with pagination (second and last page).
+   * Mocks a get on git user repository list api with pagination (second and last page).
    * @param {String} user
    */
   getUserReposPage2(user) {
@@ -67,7 +67,7 @@ class ApiMock extends MockAdapter {
   }
 
   /**
-   * Mock a get on git user repository list api without pagination.
+   * Mocks a get on git user repository list api without pagination.
    * @param {String} user
    */
   getUserRepos(user) {
@@ -107,7 +107,7 @@ class ApiMock extends MockAdapter {
   }
 
   /**
-   * Mock an error call
+   * Mocks an error call
    * @param {String} path
    * @param {Number} code
    */
@@ -116,13 +116,99 @@ class ApiMock extends MockAdapter {
   }
 
   /**
-   * Mock a success user call
+   * Mocks a success user call
    * @param {String} user
    */
   getUser(user) {
     this.onGet(`users/${user}`).replyOnce(200, {
       login: user,
     });
+  }
+
+  /**
+   * Mocks a simple user list quest
+   */
+  getUserList() {
+    this.onGet('/users').replyOnce(
+      200,
+      [
+        {
+          login: 'railsjitsu',
+          id: 32,
+          node_id: 'MDQ6VXNlcjMy',
+          avatar_url: 'https://avatars2.githubusercontent.com/u/32?v=4',
+          gravatar_id: '',
+          url: 'https://api.github.com/users/railsjitsu',
+        },
+        {
+          login: 'nitay',
+          id: 34,
+          node_id: 'MDQ6VXNlcjM0',
+          avatar_url: 'https://avatars2.githubusercontent.com/u/34?v=4',
+          gravatar_id: '',
+          url: 'https://api.github.com/users/nitay',
+        },
+      ],
+      {
+        link:
+          '<https://api.github.com/users?since=5&per_page=2>; rel="next", <https://api.github.com/users{?since}>; rel="first"',
+      }
+    );
+  }
+
+  /**
+   * Mocks a last page return from github
+   */
+  getUserListLastPage() {
+    this.onGet('/users').replyOnce(
+      200,
+      [
+        {
+          login: 'railsjitsu',
+          id: 32,
+          node_id: 'MDQ6VXNlcjMy',
+          avatar_url: 'https://avatars2.githubusercontent.com/u/32?v=4',
+          gravatar_id: '',
+          url: 'https://api.github.com/users/railsjitsu',
+        },
+        {
+          login: 'nitay',
+          id: 34,
+          node_id: 'MDQ6VXNlcjM0',
+          avatar_url: 'https://avatars2.githubusercontent.com/u/34?v=4',
+          gravatar_id: '',
+          url: 'https://api.github.com/users/nitay',
+        },
+      ],
+      {
+        link:
+          '<https://api.github.com/users?since=5&per_page=2>; rel="last", <https://api.github.com/users{?since}>; rel="first"',
+      }
+    );
+  }
+
+  /**
+   * Mocks a request without a header from github
+   */
+  getUserListWithoutLinkHeader() {
+    this.onGet('/users').replyOnce(200, [
+      {
+        login: 'railsjitsu',
+        id: 32,
+        node_id: 'MDQ6VXNlcjMy',
+        avatar_url: 'https://avatars2.githubusercontent.com/u/32?v=4',
+        gravatar_id: '',
+        url: 'https://api.github.com/users/railsjitsu',
+      },
+      {
+        login: 'nitay',
+        id: 34,
+        node_id: 'MDQ6VXNlcjM0',
+        avatar_url: 'https://avatars2.githubusercontent.com/u/34?v=4',
+        gravatar_id: '',
+        url: 'https://api.github.com/users/nitay',
+      },
+    ]);
   }
 }
 
