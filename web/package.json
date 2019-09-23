@@ -37,6 +37,23 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "jest": {
+    "testMatch": [
+      "src/**/__tests__/**/*.test.js"
+    ],
+    "moduleNameMapper": {
+      "^~/(.*)": "<rootDir>/src/$1"
+    },
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-dom/extend-expect"
+    ],
+    "coverageDirectory": "coverage",
+    "collectCoverageFrom": [
+      "!src/index.js",
+      "!src/App.js",
+      "!src/services/api.js"
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -50,7 +67,12 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^4.1.0",
+    "@testing-library/react": "^9.1.4",
+    "@types/jest": "^24.0.18",
+    "axios-mock-adapter": "^1.17.0",
     "babel-eslint": "10.0.1",
+    "babel-jest": "^24.9.0",
     "babel-plugin-root-import": "^6.2.0",
     "customize-cra": "^0.2.14",
     "eslint": "^5.16.0",
