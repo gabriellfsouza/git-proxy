@@ -2,7 +2,7 @@
   "name": "git-proxy",
   "version": "0.1.0",
   "scripts": {
-    "postinstall": "concurrently \"yarn --cwd ./server\" \"yarn --cwd ./web\"",
+    "postinstall": "concurrently \"yarn --cwd ./server\" \"yarn --cwd ./web\" && yarn build",
     "dev": "concurrently \"yarn --cwd ./server dev\" \"yarn --cwd ./web start\"",
     "build": "concurrently \"yarn --cwd ./server build\" \"yarn --cwd ./web build\"",
     "postbuild": "yarn copyfiles -a ./web/build/**/*.* ./server/tmp/",

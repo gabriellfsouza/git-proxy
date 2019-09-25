@@ -32,7 +32,7 @@ function Details(props) {
   }, []);
   // debugger;
 
-  return !loading ? (
+  return loading ? (
     <Container>Loading...</Container>
   ) : (
     <Container>
