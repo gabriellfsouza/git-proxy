@@ -1,6 +1,7 @@
 import 'dotenv/config';
 
 import Youch from 'youch';
+import path from 'path';
 import express from 'express';
 import cors from 'cors';
 import 'express-async-errors';
@@ -18,15 +19,30 @@ class App {
 
   middlewares() {
     this.server.use(express.json());
-    this.server.use(cors({
-      origin: "*",
-      exposedHeaders:['Link','Relative-Link-Url','link','relative-link-url'],
-      allowedHeaders:['Link','Relative-Link-Url','link','relative-link-url']}
-    ));
+    this.server.use(
+      cors({
+        origin: '*',
+        exposedHeaders: [
+          'Link',
+          'Relative-Link-Url',
+          'link',
+          'relative-link-url',
+        ],
+        allowedHeaders: [
+          'Link',
+          'Relative-Link-Url',
+          'link',
+          'relative-link-url',
+        ],
+      })
+    );
   }
 
   routes() {
+    const publicPath = path.join(__dirname, '..', 'tmp', 'web', 'build');
     this.server.use(routes);
+    this.server.use('/', express.static(publicPath));
+    this.server.use('/users/*', express.static(publicPath));
   }
 
   exceptionHandler() {
