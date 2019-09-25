@@ -11,6 +11,9 @@ Este projeto foi criado de forma que tanto a parte de front quanto a de back pos
 
 A aplicação final se encontra em https://gabriellfsouza-git-proxy.herokuapp.com
 
+Ps.: Há um limite de chamadas que o GitHub permite realizar por padrão, então recomendo realizar testes com usuários com menos repostiórios, pelo menos até resolução do algorítmo.
+Ex: https://gabriellfsouza-git-proxy.herokuapp.com/users/gabriellfsouza
+
 ## Pré requisitos
 
 É necesário ter o Node.JS, YARN e git previamente instalados na máquina.
