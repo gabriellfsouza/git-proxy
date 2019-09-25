@@ -9,6 +9,8 @@ Foi desenvolvida tanto a parte front quanto a back (ReactJS e NodeJS respectivam
 
 Este projeto foi criado de forma que tanto a parte de front quanto a de back possam ser utilizadas de maneira simultânea.
 
+A aplicação final se encontra em https://gabriellfsouza-git-proxy.herokuapp.com
+
 ## Pré requisitos
 
 É necesário ter o Node.JS, YARN e git previamente instalados na máquina.
